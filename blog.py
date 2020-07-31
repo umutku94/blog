@@ -40,6 +40,7 @@ class AddArticle(Form):
 
 #------------------------APP AND DB CONFIG---------------------------------------
 app = Flask(__name__)
+app.config["DEBUG"] = True
 app.config["MYSQL_HOST"] = "localhost"
 app.config["MYSQL_USER"] = "root"
 app.config["MYSQL_PASSWORD"] = ""
@@ -76,6 +77,18 @@ def logout_required(f):
 @app.route("/")
 def index():
     cur = mysql.connection.cursor()
+    crarticles = "CREATE TABLE IF NOT EXISTS articles(id INTEGER PRIMARY KEY AUTO_INCREMENT, \
+    title TEXT UNIQUE NOT NULL, author TEXT NOT NULL, content TEXT UNIQUE NOT NULL, \
+    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP)"
+
+    crusers = "CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTO_INCREMENT, \
+    name TEXT NOT NULL, email TEXT UNIQUE NOT NULL, username TEXT UNIQUE NOT NULL, \
+    password TEXT NOT NULL)"
+    
+    cur.execute(crarticles)
+    cur.execute(crusers)
+    mysql.connection.commit()
+
     sorgu = "SELECT * FROM articles"
     result = cur.execute(sorgu)
     cur.close()
@@ -327,5 +340,5 @@ def dashboard():
 
 #To run the .py
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
 
