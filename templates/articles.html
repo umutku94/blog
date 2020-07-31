@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Makaleler
+{% endblock title %}
+
+{% block body %}
+<h3>Makaleler</h3>
+<hr>
+
+{% if articles  %}
+  <br>
+    <form method="post" action="/search" id="custom-search-form" class="form-search form-horizontal pull-right">
+      <div class="input-append span12">
+        <input type="text" name="keyword" class="search-query" placeholder="Başlık Ara...">
+        <button type="submit" class="btn"><i class="fas fa-search"></i></button>
+      </div>
+    </form>
+  <br>
+
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Yazar</th>
+      <th scope="col">Başlık</th>
+      <th scope="col">Oluşturma Tarihi</th>
+    </tr>
+  </thead>
+    <tbody>
+    {% for a in articles  %}
+    <tr>
+      <th scope="row">{{a.author}}</th>
+      <td><a href="/article/{{a.id}}" class="badge badge-light">{{a.title}}</a></td>
+      <td>{{a.created_date}}</td>
+    </tr>
+  
+    {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+<div class = "alert alert-danger">Henüz makale eklenmemiş.</div>
+{% endif %}
+{% endblock body %}

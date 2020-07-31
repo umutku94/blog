@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Makale Güncelle
+{% endblock title %}
+
+{% block body %}
+
+    {% if form %}
+        <h3>Makale Güncelle</h3>
+        <hr>
+        {% from "/includes/formhelpers.html" import render_field %}
+        <form method=post>
+        <dl>
+            {{ render_field(form.title, class = "form-control") }}
+            {{ render_field(form.content, class = "form-control") }}
+        </dl>
+        <p><button type = "submit" class = "btn btn-danger">Güncelle</button>
+        </form>
+
+    {% else %}
+        <div class = "alert alert-danger">
+        Bu makale size ait olmadığı için güncelleme yapamazsınız.</div>
+    {% endif %}
+
+{% endblock body %}

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Makale Sil
+{% endblock title %}
+
+{% block body %}
+
+    {% if article %}
+    <h5 class ="alert alert-warning"><u>{{article.title}}</u> 
+    başlıklı makaleyi silmek istediğine emin misiniz?</h5>
+    <hr>
+
+    <form method = "post" action="/delete/{{article.id}}">
+        <input name ="evet" type="submit" class = "btn btn-success" value="Evet"></td>
+        <a href="/dashboard" class = "btn btn-danger">Hayır</a></td>
+    </form>
+
+    {% else %}
+    <h5 class ="alert alert-danger"> 
+    Bu makale size ait olmadığı için silme işlemi gerçekleşmedi.</h5>
+
+    {% endif %}
+    
+{% endblock body %}

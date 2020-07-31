@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Hakkımda
+{% endblock title %}
+
+{% block body %}
+<h3>Hakkımda</h3>
+<hr>
+<p>
+Herkese merhaba. Ben Umut. Bu site Python Flask modülünü öğrenmek için hazırlanmış deneme
+bir web sitesidir. Bu sayede Python ile nasıl bir web sitesi tasarlandığını öğrenmiş
+oluyorum. Eğer siz de benimle iletişime geçmek isterseniz
+E-mail adresim: umutku0528@gmail.com
+</p>
+
+<hr>
+<h6>Emeği Geçenler:</h6>
+
+<ul type="circle">
+
+{% for i in cont %}
+<li>{{i}}</li>
+{% endfor %}
+
+</ul>
+
+
+{% endblock body %}

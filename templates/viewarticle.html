@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Makale {{id}}
+{% endblock  %}
+
+{% block body %}
+{% if article %}
+<h3>Makale {{id}}</h3>
+<hr>
+<ul class="list-group">
+  <li class="list-group-item">Başlık: {{article.title}}</li>
+  <li class="list-group-item">Yazar: {{article.author}}</li>
+  <li class="list-group-item">Oluşturma Tarihi: {{article.created_date}} </li>
+</ul>
+<hr>
+<div class = "list-group-item">{{article.content|safe}}</div>
+{% else %}
+<div class = "alert alert-danger">Böyle bir makale bulunamadı</div>
+{% endif %}
+
+{% endblock body %}

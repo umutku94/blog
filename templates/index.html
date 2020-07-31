@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}
+Ana Sayfa
+{% endblock title %}
+
+{% block body %}
+<div class="jumbotron text-center">
+<h3>Merhaba</h3>
+<hr>
+<p>Burası benim Python ile geliştirdiğim bir web sitesidir. Flask'ın nasıl
+çalıştığını anlamak için bu web sitesini kurdum. Umarım iyi vakit geçirirsiniz.</p>
+</div>
+
+{% if switch == "on" %}
+<p>Site Durumu : <strong>Online</strong></p>
+{% elif switch == "off" %}
+<p>Site Durumu : <strong>Offline</strong></p>
+{% else %}
+<p>Site Durumu : <strong>Geçersiz komut girildi !</strong></p>
+{% endif %}
+Kayıtlı makale sayısı : <strong>{{result}}</strong>
+
+{% endblock body %}
